@@ -15,13 +15,13 @@ public class Test {
 		List<Person> people = new ArrayList<>();
 		
 		Address address = new Address();
-		address.setStreet("Sahin Sk.");
-		address.setDoorNumber(40);
+		address.setStreet("Bursa Sk.");
+		address.setDoorNumber(123);
 		
 		
 		Person person = new Person();
-		person.setFirstName("Cagri");
-		person.setLastName("Turkmen");
+		person.setFirstName("MustafaCan");
+		person.setLastName("Ozturk");
 		person.setAddress(address);
 		
 		people.add(person);
@@ -29,6 +29,13 @@ public class Test {
 		
 		AddressDao addressDao = new AddressDao();
 		PersonDao personDao = new PersonDao();
+//		addressDao.create(address);
+//		personDao.create(person);
+		
+		//personDao.delete(7);
+		personDao.update(9, person);
+		
+	//	personDao.update(0, person);
 		
 	//	addressDao.create(address);
 	//	personDao.create(person);
@@ -41,9 +48,9 @@ public class Test {
 		
 //		addressDao.delete(8);
 		
-		for (Address addressa : addressDao.listAll()) {
-			System.out.println(addressa);
-		} ;
+//		for (Address addressa : addressDao.listAll()) {
+//			System.out.println(addressa);
+//		} ;
 	}
 
 }

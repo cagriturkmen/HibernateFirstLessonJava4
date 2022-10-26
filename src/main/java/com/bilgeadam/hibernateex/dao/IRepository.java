@@ -1,6 +1,7 @@
 package com.bilgeadam.hibernateex.dao;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.hibernate.Session;
 
@@ -14,7 +15,7 @@ public interface IRepository<T> {
 	
 	public void delete(long id);
 	
-	ArrayList<T> listAll();
+	List<T> listAll();
 	
 	T find(long id);
 	

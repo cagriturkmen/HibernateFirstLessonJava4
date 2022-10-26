@@ -30,10 +30,20 @@ public class Test {
 		AddressDao addressDao = new AddressDao();
 		PersonDao personDao = new PersonDao();
 		
-		addressDao.create(address);
-		personDao.create(person);
+	//	addressDao.create(address);
+	//	personDao.create(person);
 		
+	//	addressDao.find(6);
+//		Address newAddress = new Address();
+//		newAddress.setStreet("Sisli");
+//		newAddress.setDoorNumber(1000);	
+//		addressDao.update(6, newAddress);
 		
+//		addressDao.delete(8);
+		
+		for (Address addressa : addressDao.listAll()) {
+			System.out.println(addressa);
+		} ;
 	}
 
 }

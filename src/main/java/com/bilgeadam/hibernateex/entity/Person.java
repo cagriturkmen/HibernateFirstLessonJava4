@@ -18,7 +18,6 @@ import lombok.ToString;
 @NoArgsConstructor
 @Entity
 @Table(name = "tbl_person")
-@ToString
 public class Person {
 	
 	@Id
@@ -32,5 +31,11 @@ public class Person {
 	@ManyToOne
 	@JoinColumn(name = "address_id")
 	private Address address;
+
+	@Override
+	public String toString() {
+		return "Person [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + "]";
+	}
+	
 	
 }

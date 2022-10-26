@@ -29,11 +29,11 @@ public class Test {
 		
 		AddressDao addressDao = new AddressDao();
 		PersonDao personDao = new PersonDao();
-//		addressDao.create(address);
-//		personDao.create(person);
+	//	addressDao.create(address);
+	//	personDao.create(person);
 		
 		//personDao.delete(7);
-		personDao.update(9, person);
+		personDao.update(9,person,5);
 		
 	//	personDao.update(0, person);
 		

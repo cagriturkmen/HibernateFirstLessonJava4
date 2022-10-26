@@ -2,7 +2,10 @@ package com.bilgeadam.hibernateex.dao;
 
 import java.util.List;
 import org.hibernate.Session;
+
+import com.bilgeadam.hibernateex.entity.Address;
 import com.bilgeadam.hibernateex.entity.Person;
+
 import jakarta.persistence.TypedQuery;
 
 public class PersonDao implements IRepository<Person>  {
@@ -27,20 +30,23 @@ public class PersonDao implements IRepository<Person>  {
 		
 		
 	}
-
-	@Override
 	public void update(long id, Person entity) {
-
+		
+	}
+	
+	public void update(long id, Person entity, long addressId) {
+		AddressDao dao = new AddressDao();
 		Session session = null;
 		try {
 			Person updatePerson = find(id);
+			Address tempAddress = updatePerson.getAddress();
 			updatePerson.setFirstName(entity.getFirstName());
 			updatePerson.setLastName(entity.getLastName());
-			updatePerson.setAddress(entity.getAddress());
+			updatePerson.setAddress(dao.find(addressId));
 			
 			session = databaseConnection();
 			session.getTransaction().begin();
-			session.merge(updatePerson);
+			session.saveOrUpdate(updatePerson);
 			session.getTransaction().commit();
 			System.out.println("Successfully updated.");
 		} catch (Exception e) {

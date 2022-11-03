@@ -109,5 +109,85 @@ public class AddressDao implements IRepository<Address>  {
 		}
 		return address;
 	}
+	
+	public void countAddress() {
+		
+		Session session = databaseConnection();
+
+		String hql = "select count(*) from Address";
+		
+		TypedQuery<Long> typedQuery = session.createQuery(hql, Long.class);
+		Long addressCount = typedQuery.getSingleResult();
+		
+		System.out.println(addressCount);		
+	}
+	
+	public void avgDoorNumber() {
+		
+		Session session = databaseConnection();
+		/*
+		 -sum
+		 -avg
+		 -count
+		 -min
+		 -max
+		 */
+		String hql = "select avg(doorNumber) from Address";
+		TypedQuery<Double> typedQuery = session.createQuery(hql, Double.class);
+		Double avgDoorNum = typedQuery.getSingleResult();
+		
+		System.out.println(avgDoorNum);		
+	}
+	
+	public void distinctDoorNumber() {
+		
+		Session session = databaseConnection();
+		String hql = "select distinct(doorNumber) from Address";
+		TypedQuery<Integer> typedQuery = session.createQuery(hql, Integer.class);
+		List<Integer> doorNumberList = typedQuery.getResultList();
+		
+		for (Integer integer : doorNumberList) {
+			System.out.println(integer);
+		}
+		
+	}
+	
+	public void filterDoorNumber(int input) {
+		
+		Session session = databaseConnection();
+		String hql = "select adr from Address as adr where doorNumber<=:key";
+		
+		TypedQuery<Address> typedQuery = session.createQuery(hql, Address.class);
+		typedQuery.setParameter("key", input);
+		
+		System.out.println(typedQuery.getResultList());
+		
+	}
+	
+	public void betweenMethod(int a, int b) {
+		
+		Session session = databaseConnection();
+		String hql = "select address from Address as address where doorNumber between :firstKey and :secondKey ";
+		TypedQuery<Address> typedQuery = session.createQuery(hql, Address.class);
+		typedQuery.setParameter("firstKey", a);
+		typedQuery.setParameter("secondKey", b);
+		List<Address> adddresList = typedQuery.getResultList();
+		System.out.println(adddresList);
+	}
+	
+	public void orderAddressByDoorNumber() {
+		
+		Session session = databaseConnection();
+		String hql = "select address from Address as address order by address.doorNumber desc";
+		TypedQuery<Address> typedQuery = session.createQuery(hql, Address.class);
+		
+		for (Address address : typedQuery.getResultList()) {
+			System.out.println(address);
+		}
+		
+		
+	}
+	
+	
 
 }

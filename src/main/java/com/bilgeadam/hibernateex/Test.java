@@ -29,18 +29,18 @@ public class Test {
 		
 		AddressDao addressDao = new AddressDao();
 		PersonDao personDao = new PersonDao();
-	//	addressDao.create(address);
-	//	personDao.create(person);
+//		addressDao.create(address);
+//		personDao.create(person);
 		
-		//personDao.delete(7);
-		personDao.update(9,person,5);
+//		personDao.delete(7);
+//		personDao.update(9,person,5);
 		
-	//	personDao.update(0, person);
+//		personDao.update(0, person);
 		
-	//	addressDao.create(address);
-	//	personDao.create(person);
+//		addressDao.create(address);
+//		personDao.create(person);
 		
-	//	addressDao.find(6);
+//		addressDao.find(6);
 //		Address newAddress = new Address();
 //		newAddress.setStreet("Sisli");
 //		newAddress.setDoorNumber(1000);	
@@ -51,6 +51,14 @@ public class Test {
 //		for (Address addressa : addressDao.listAll()) {
 //			System.out.println(addressa);
 //		} ;
+		
+//		addressDao.countAddress();
+
+//		addressDao.avgDoorNumber();
+//	addressDao.distinctDoorNumber();	
+//		addressDao.filterDoorNumber(45);
+//		addressDao.betweenMethod(120, 999);
+		addressDao.orderAddressByDoorNumber();
 	}
 
 }
